@@ -41,13 +41,14 @@ def main():
     files = os.listdir(input_dir)
     converted_count = 0
     total_count = len(files)
-    output_dir = os.path.join(input_dir, "tmp_file")
+    output_dir = os.path.join(input_dir, "mp3_file")
     print("Output dir is ", output_dir)
 
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
 
     os.mkdir(output_dir)
+    qcm_processed = False
 
     for file in files:
         src_path = os.path.join(input_dir, file)
@@ -55,20 +56,24 @@ def main():
             ncm.dump(src_path, output_dir)
             converted_count += 1
         elif file.endswith(".qmc0") or file.endswith(".qmc3") or file.endswith(".qmcflac"):
-            dest_path = os.path.join(output_dir, file)
-            shutil.move(src_path, dest_path)
-            try:
-                convert = qmc.Convert(input_dir=output_dir, output=output_dir)
-                convert.qmc_to_flac().flac_to_mp3()
-                converted_count += 1
-            except Exception as e:
-                print(e)
-            finally:
-                shutil.move(dest_path, src_path)
+            if not qcm_processed:
+                try:
+                    convert = qmc.Convert(input_dir=input_dir)
+                    convert.qmc_to_flac()
+                except Exception as e:
+                    print(e)
+
+            converted_count += 1
         else:
             continue
 
         print("No ", converted_count, " converting file ", file)
+
+    files = os.listdir(input_dir)
+
+    for file in files:
+        if file.endswith(".mp3"):
+            shutil.move(os.path.join(input_dir, file), os.path.join(output_dir, file))
 
     print(total_count, " files, ", converted_count, " are converted")
 

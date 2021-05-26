@@ -7,12 +7,12 @@ import platform
 
 def get_decoder_name():
     decoder = "decoder-mac"
+    print("Platform is : ", platform.system())
+
     if platform.system() == 'Windows':
         decoder = "decoder-win.exe"
     elif platform.system() == 'Linux':
         decoder = "decoder-linux"
-    else:
-        print('Platform is undefined')
 
     return decoder
 
