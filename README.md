@@ -2,8 +2,8 @@
 QQ音乐文件、网易云音乐文件转换成mp3文件
 
 支持类型：
-    QQ音乐：.qmc3/.qmc0/.qmcflac
-    网易云：.ncm
+* QQ音乐：.qmc3/.qmc0/.qmcflac
+* 网易云：.ncm
 
 ## 系统要求
 * Python > 3.7

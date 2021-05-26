@@ -32,7 +32,6 @@ def main():
 
     print("Input dir is ", input_dir)
 
-
     if not os.path.isdir(input_dir):
         raise Exception("input support directory only.")
 
