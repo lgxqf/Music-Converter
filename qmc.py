@@ -1,7 +1,4 @@
-import math
 import os
-import shutil
-import multiprocessing
 import platform
 
 
@@ -22,14 +19,10 @@ class Convert(object):
         self.input = input_dir
         self.output = output if output is not None else input_dir
         self.root_path = os.path.abspath(os.path.dirname(__file__))
-        self.flac_files = []
-        self.mp3_files = []
-        self.procs = []
         self.qm2flac_tool = os.path.join(self.root_path, "bin/" + get_decoder_name())
 
     def qmc_to_flac(self):
         os.chdir(self.input)
         print(self.qm2flac_tool)
         os.system(self.qm2flac_tool)
-        # print("qmc_to_flac convert finish.")
         return self

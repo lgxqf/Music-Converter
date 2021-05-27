@@ -6,7 +6,7 @@
 */logs/*
 */venv/*
 *.log
-
+mp3_file
 
 # Ignore swap
 *.swp
