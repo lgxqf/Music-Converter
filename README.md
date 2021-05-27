@@ -25,6 +25,7 @@ python music_converter.py music_dir
 qmc->flac: https://github.com/Presburger/qmc-decoder
 flac->mp3: https://github.com/robinbowes/flac2mp3
 qmcflac2mp3->https://github.com/alexknight/qmcflac2mp3
+在线工具 https://mp3.aoleiao.com/
 ```
 
 #TODO
