@@ -2,7 +2,6 @@
 # @Author    : Justin Ma
 
 
-import argparse
 import os
 import shutil
 import sys
@@ -10,21 +9,10 @@ import ncm
 import qmc
 
 
-def read_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-o', '--output-dir', type=os.path.abspath, help='output directory')
-    # parser.add_argument('-m', '--mode', choices=('qmc2flac', 'flac2mp3', 'qmc2mp3',), default='qmc2mp3')
-    # parser.add_argument('-n', '--thread-num', type=int,help='convert thread num')
-
-    args = parser.parse_args()
-    return args
-
-
 def main():
     if 1 == len(sys.argv):
         raise Exception("please input correct input dir.")
 
-    # args = read_args()
     input_dir = sys.argv[1]
 
     if not os.path.isabs(input_dir):
@@ -34,9 +22,6 @@ def main():
 
     if not os.path.isdir(input_dir):
         raise Exception("input support directory only.")
-
-    # if args.output_dir is not None:
-    #     output_dir = args.output_dir
 
     files = os.listdir(input_dir)
     converted_count = 0
