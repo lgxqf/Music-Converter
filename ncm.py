@@ -68,6 +68,7 @@ def dump(file_path, output_path="./"):
         m.write(chunk)
     m.close()
     f.close()
+    return m.name
 
 
 if __name__ == '__main__':
