@@ -13,6 +13,8 @@ QQ音乐文件、网易云音乐文件转换成mp3文件
 ## 系统要求
 * Python > 3.7
 * pip3 install pycryptodome
+* pip3 install pydub
+* https://ffmpeg.org/
 * crypto 模块安装 https://www.jianshu.com/p/6827ffc56e66
 
 ## 执行方式

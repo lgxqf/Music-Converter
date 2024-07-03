@@ -41,7 +41,7 @@ def main():
 
     files = os.listdir(input_dir)
     converted_count = 0
-    total_count = len(files)
+    total_count = 0
     output_dir = os.path.join(input_dir, "mp3_file")
     print("Output dir is ", output_dir)
 
@@ -53,6 +53,12 @@ def main():
 
     for file in files:
         src_path = os.path.join(input_dir, file)
+
+        if os.path.isdir(src_path):
+            continue
+
+        total_count += 1
+
         if file.endswith(".ncm"):
             file_name = ncm.dump(src_path, output_dir)
             print(file_name)
@@ -64,7 +70,8 @@ def main():
             converted_count += 1
 
         elif file.endswith(".flac"):
-            convert_flac_to_mp3(file, file.replace(".flac", ".mp3"))
+            convert_flac_to_mp3(src_path, src_path.replace(".flac", ".mp3"))
+            converted_count += 1
 
         elif file.endswith(".qmc0") or file.endswith(".qmc3") or file.endswith(".qmcflac"):
             if not qcm_processed:
