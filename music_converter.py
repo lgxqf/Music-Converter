@@ -7,11 +7,11 @@ import shutil
 import ncm
 import qmc
 from pydub import AudioSegment
+
+
 # from pydub.exceptions import CouldNotDecodeError
 
 def convert_flac_to_mp3(flac_file_path, mp3_file_path):
-
-
     try:
         # 加载FLAC文件
         audio = AudioSegment.from_file(flac_file_path, format="flac")
@@ -23,8 +23,8 @@ def convert_flac_to_mp3(flac_file_path, mp3_file_path):
     except Exception as e:
         print(f"转换过程中发生错误：{e}")
 
-def main():
 
+def main():
     # if 1 == len(sys.argv):
     #     raise Exception("please input correct input dir.")
 
@@ -58,13 +58,13 @@ def main():
             print(file_name)
 
             if file_name.endswith(".flac"):
-                convert_flac_to_mp3(file_name, file_name.replace(".flac",".mp3"))
+                convert_flac_to_mp3(file_name, file_name.replace(".flac", ".mp3"))
                 os.remove(file_name)
 
             converted_count += 1
 
         elif file.endswith(".flac"):
-            convert_flac_to_mp3(file, file.replace(".flac",".mp3"))
+            convert_flac_to_mp3(file, file.replace(".flac", ".mp3"))
 
         elif file.endswith(".qmc0") or file.endswith(".qmc3") or file.endswith(".qmcflac"):
             if not qcm_processed:
